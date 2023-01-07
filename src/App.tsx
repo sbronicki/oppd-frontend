@@ -7,14 +7,14 @@ import PageLayout from "./components/pageLayout";
 
 function App() {
   return (
-    <BrowserRouter>
+    <div className="App">
       <Routes>
         <Route path="/" element={<PageLayout />}>
           <Route index element={<Home />} />
           <Route path="/about" element={<About />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </div>
   );
 }
 

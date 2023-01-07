@@ -1,9 +1,10 @@
 import { useState } from "react";
-
+import { useMutation } from "react-query";
 import { Form, Input, Button } from "antd";
 
 import "react-quill/dist/quill.snow.css";
 import ReactQuill from "react-quill";
+import { createPost } from "../../api";
 
 const tailFormItemLayout = {
   wrapperCol: {
@@ -12,10 +13,14 @@ const tailFormItemLayout = {
 };
 
 export default function CreatePost() {
+  const createPostMutation = useMutation(createPost);
   const [form] = Form.useForm();
 
+  console.log(createPostMutation);
+
   const onFinish = (values: any) => {
-    console.log({ values });
+    // sanitize post ??
+    createPostMutation.mutate(values.Post);
   };
 
   return (
