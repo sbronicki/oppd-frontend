@@ -1,10 +1,9 @@
 import { Card } from "antd";
 
 function Post({ date, post }: postProps) {
-  // need to sanitize posts?
   return (
     <Card size="small" title={date}>
-      {post}
+      <div dangerouslySetInnerHTML={{ __html: post }}></div>
     </Card>
   );
 }
