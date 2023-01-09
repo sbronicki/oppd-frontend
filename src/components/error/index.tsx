@@ -16,6 +16,6 @@ export default Error;
 interface Error {
   data: {
     error: string;
-    errorMsg: string;
+    errorMsg?: string;
   };
 }

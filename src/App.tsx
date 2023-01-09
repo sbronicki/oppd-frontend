@@ -19,7 +19,10 @@ function App() {
             <Route path="/posts/:postIDFromURL" element={<Post />} />
           </Route>
           <Route path="/about" element={<About />} />
-          <Route path="*" element={<Error message="404" />} />
+          <Route
+            path="*"
+            element={<Error data={{ error: "404 page not found" }} />}
+          />
         </Route>
       </Routes>
     </div>
