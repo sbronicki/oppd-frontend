@@ -7,13 +7,18 @@ import Loading from "../../loading";
 
 function Post({ date, post, postID }: postProps) {
   const { postIDFromURL } = useParams();
-  const { data, isLoading, error } = useQuery(
+  const { data, isLoading } = useQuery(
     ["posts", postIDFromURL],
     ({ queryKey }) => getPostByID(queryKey[1]),
     { enabled: postID === undefined }
   );
-  if (isLoading) <Loading />;
-  if (error) <Error />;
+
+  if (isLoading) {
+    return <Loading />;
+  }
+  if (data?.error) {
+    return <Error message={data.error} />;
+  }
 
   return (
     <Card
@@ -59,4 +64,12 @@ interface postProps {
 interface PostTitleProps {
   date: string;
   postID: string;
+}
+
+interface dataQuery {
+  _id: string;
+  post: string;
+  createdAt: string;
+  updatedAt: string;
+  __v: number;
 }

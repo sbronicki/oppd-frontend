@@ -7,10 +7,14 @@ import Loading from "../../loading";
 import Post from "../post";
 
 function Posts() {
-  const { isLoading, data, error } = useQuery(["posts"], getPosts);
+  const { isLoading, data } = useQuery(["posts"], getPosts);
 
-  if (isLoading) <Loading />;
-  if (error) <Error />;
+  if (isLoading) {
+    return <Loading />;
+  }
+  if (data?.error) {
+    return <Error message={data.error} />;
+  }
 
   return (
     <div className="posts">

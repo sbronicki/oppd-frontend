@@ -5,6 +5,8 @@ import { Form, Input, Button } from "antd";
 import "react-quill/dist/quill.snow.css";
 import ReactQuill from "react-quill";
 import { createPost } from "../../api";
+import Loading from "../loading";
+import Error from "../error";
 
 const tailFormItemLayout = {
   wrapperCol: {
@@ -13,12 +15,19 @@ const tailFormItemLayout = {
 };
 
 export default function CreatePost() {
-  const createPostMutation = useMutation(createPost);
+  const { data, isLoading, mutate } = useMutation(createPost);
   const [form] = Form.useForm();
 
   const onFinish = (values: any) => {
-    createPostMutation.mutate(values.Post);
+    mutate(values.Post);
   };
+
+  if (isLoading) {
+    return <Loading />;
+  }
+  if (data?.error) {
+    return <Error message={data.error} />;
+  }
 
   return (
     <Form name="form" form={form} onFinish={onFinish}>

@@ -1,7 +1,11 @@
 import React from "react";
 
-function Error() {
-  return <div>Error</div>;
+function Error({ message }: Error) {
+  return <div className="error-message">Error: {message}</div>;
 }
 
 export default Error;
+
+interface Error {
+  message: string;
+}

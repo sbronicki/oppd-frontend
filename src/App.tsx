@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import About from "./components/about";
+import Error from "./components/error";
 import Home from "./components/home";
 import Navigation from "./components/navigation";
 import PageLayout from "./components/pageLayout";
@@ -18,6 +19,7 @@ function App() {
             <Route path="/posts/:postIDFromURL" element={<Post />} />
           </Route>
           <Route path="/about" element={<About />} />
+          <Route path="*" element={<Error message="404" />} />
         </Route>
       </Routes>
     </div>
