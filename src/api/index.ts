@@ -11,3 +11,8 @@ export async function createPost(post: string) {
   });
   return response;
 }
+
+export async function getPostByID(postID?: string) {
+  const response = await axios.get("http://localhost:4000/api/posts/" + postID);
+  return response;
+}

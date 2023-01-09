@@ -7,14 +7,10 @@ import Loading from "../../loading";
 import Post from "../post";
 
 function Posts() {
-  const { isError, isSuccess, isLoading, data, error } = useQuery(
-    ["posts"],
-    getPosts,
-    { staleTime: 60000 }
-  );
+  const { isLoading, data, error } = useQuery(["posts"], getPosts);
 
   if (isLoading) <Loading />;
-  if (isError) <Error />;
+  if (error) <Error />;
 
   return (
     <div className="posts">
@@ -23,7 +19,13 @@ function Posts() {
           dataSource={data.data}
           renderItem={(postData: postData) => (
             <List.Item>
-              {<Post date={postData.createdAt} post={postData.post} />}
+              {
+                <Post
+                  postID={postData._id}
+                  date={postData.createdAt}
+                  post={postData.post}
+                />
+              }
             </List.Item>
           )}
         />

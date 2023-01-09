@@ -4,6 +4,8 @@ import About from "./components/about";
 import Home from "./components/home";
 import Navigation from "./components/navigation";
 import PageLayout from "./components/pageLayout";
+import Post from "./components/post/post";
+import Posts from "./components/post/posts";
 
 function App() {
   return (
@@ -11,6 +13,10 @@ function App() {
       <Routes>
         <Route path="/" element={<PageLayout />}>
           <Route index element={<Home />} />
+          <Route path="/posts">
+            <Route index element={<Posts />} />
+            <Route path="/posts/:postIDFromURL" element={<Post />} />
+          </Route>
           <Route path="/about" element={<About />} />
         </Route>
       </Routes>
