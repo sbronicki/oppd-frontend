@@ -1,11 +1,21 @@
 import React from "react";
 
-function Error({ message }: Error) {
-  return <div className="error-message">Error: {message}</div>;
+function Error({ data }: Error) {
+  console.log({
+    data,
+  });
+
+  const { error, errorMsg } = data;
+  console.log(errorMsg);
+
+  return <div className="error-message">Error: {error}</div>;
 }
 
 export default Error;
 
 interface Error {
-  message: string;
+  data: {
+    error: string;
+    errorMsg: string;
+  };
 }

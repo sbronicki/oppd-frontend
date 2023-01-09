@@ -13,7 +13,7 @@ function Posts() {
     return <Loading />;
   }
   if (data?.error) {
-    return <Error message={data.error} />;
+    return <Error data={data} />;
   }
 
   return (

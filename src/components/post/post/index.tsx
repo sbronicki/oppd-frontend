@@ -17,7 +17,7 @@ function Post({ date, post, postID }: postProps) {
     return <Loading />;
   }
   if (data?.error) {
-    return <Error message={data.error} />;
+    return <Error data={data} />;
   }
 
   return (
