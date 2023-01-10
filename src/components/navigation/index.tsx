@@ -5,12 +5,12 @@ import { Menu } from "antd";
 
 const items: MenuProps["items"] = [
   {
-    label: <NavLink to="/about">About</NavLink>,
-    key: "about",
-  },
-  {
     label: <NavLink to="/">Home</NavLink>,
     key: "home",
+  },
+  {
+    label: <NavLink to="/about">About</NavLink>,
+    key: "about",
   },
 ];
 
@@ -20,7 +20,7 @@ export default function Navigation() {
 
   return (
     <Menu
-      style={{ flexDirection: "row-reverse", paddingRight: "2.5rem" }}
+      style={{ justifyContent: "center" }}
       onClick={onClick}
       selectedKeys={[current]}
       mode="horizontal"

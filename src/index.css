@@ -19,10 +19,29 @@ a {
   box-sizing: border-box;
 }
 .page-layout {
-  width: 100vw;
+  width: 90vw;
   height: 100vh;
+  max-width: 2000px;
+  border: 1px solid rgba(5, 5, 5, 0.06);
 }
-
+.App,
+.home-page,
+.about-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.count-down {
+  margin: 2.5rem;
+}
 .ql-editor {
   height: 45vh !important;
+}
+@media only screen and (max-width: 600px) {
+  .count-down {
+    margin: 0.5rem;
+  }
+  .page-layout {
+    border: none;
+  }
 }

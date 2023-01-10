@@ -1,7 +1,7 @@
 import React from "react";
 
 function CountDown() {
-  return <div>CountDown</div>;
+  return <div className="count-down">CountDown</div>;
 }
 
 export default CountDown;

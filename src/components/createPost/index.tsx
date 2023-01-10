@@ -9,9 +9,7 @@ import Loading from "../loading";
 import Error from "../error";
 
 const tailFormItemLayout = {
-  wrapperCol: {
-    xs: {},
-  },
+  wrapperCol: { span: 6, offset: 9 },
 };
 
 export default function CreatePost() {
@@ -30,7 +28,7 @@ export default function CreatePost() {
   }
 
   return (
-    <Form name="form" form={form} onFinish={onFinish}>
+    <Form name="editor-form" form={form} onFinish={onFinish}>
       <Form.Item name="Post" rules={[{ required: true }]}>
         <ReactQuill
           modules={{
