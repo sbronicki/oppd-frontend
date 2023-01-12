@@ -35,9 +35,30 @@ a {
   margin: 2.5rem;
 }
 .ql-editor {
-  height: 45vh !important;
+  height: 45vh;
+  min-height: 350px;
+  width: 1000px;
+  max-width: 1100px;
 }
-@media only screen and (max-width: 600px) {
+.post-card,
+.posts-container {
+  width: 100%;
+  max-width: 1100px;
+}
+.ql-align-right {
+  text-align: right;
+}
+.ql-align-center {
+  text-align: center;
+}
+@media only screen and (max-width: 768px) {
+  .post-card {
+    width: 100%;
+  }
+  .ql-editor {
+    height: 300px;
+    width: 100%;
+  }
   .count-down {
     margin: 0.5rem;
   }

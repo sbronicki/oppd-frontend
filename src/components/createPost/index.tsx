@@ -9,7 +9,16 @@ import Loading from "../loading";
 import Error from "../error";
 
 const tailFormItemLayout = {
-  wrapperCol: { span: 6, offset: 9 },
+  labelCol: {
+    span: 12,
+    offset: 0,
+    xs: { span: 12, offset: 0 },
+  },
+  wrapperCol: {
+    span: 12,
+    offset: 0,
+    xs: { span: 12, offset: 0 },
+  },
 };
 
 export default function CreatePost() {
@@ -38,7 +47,7 @@ export default function CreatePost() {
           theme="snow"
         />
       </Form.Item>
-      <Form.Item {...tailFormItemLayout}>
+      <Form.Item label="Submit Your Post" {...tailFormItemLayout}>
         <Button type="primary" htmlType="submit">
           Submit
         </Button>
@@ -56,5 +65,5 @@ const TOOLBAR_OPTIONS = [
   [{ script: "sub" }, { script: "super" }],
   [{ align: [] }],
   ["image", "blockquote", "code-block"],
-  ["clean"],
+  // ["clean"],
 ];

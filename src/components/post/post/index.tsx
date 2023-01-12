@@ -22,7 +22,7 @@ function Post({ date, post, postID }: postProps) {
 
   return (
     <Card
-      size="small"
+      className="post-card"
       title={
         <PostTitle
           date={date || data?.data.createdAt}

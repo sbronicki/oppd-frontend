@@ -17,7 +17,7 @@ function Posts() {
   }
 
   return (
-    <div className="posts">
+    <div className="posts-container">
       {data ? (
         <List
           dataSource={data.data}
