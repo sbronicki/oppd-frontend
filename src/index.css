@@ -46,6 +46,12 @@ a {
   width: 1000px;
   max-width: 1100px;
 }
+.ql-toolbar {
+  border-radius: 8px 8px 0 0;
+}
+.ql-container {
+  border-radius: 0 0 8px 8px;
+}
 .post-card,
 .posts-container,
 .post-container {
