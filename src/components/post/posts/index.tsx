@@ -22,7 +22,7 @@ function Posts() {
         <List
           dataSource={data.data}
           renderItem={(postData: postData) => (
-            <List.Item>
+            <List.Item style={{ border: "none" }}>
               {
                 <Post
                   postID={postData._id}
