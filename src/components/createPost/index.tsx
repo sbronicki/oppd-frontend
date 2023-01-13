@@ -22,17 +22,23 @@ const tailFormItemLayout = {
 };
 
 export default function CreatePost() {
-  const { data, isLoading, mutate } = useMutation(createPost);
+  const { data, isLoading, mutate } = useMutation({
+    mutationFn: createPost,
+    onSuccess: onSuccess,
+  });
   const [form] = Form.useForm();
 
-  const onFinish = (values: any) => {
+  function onFinish(values: any) {
     mutate(values.Post);
-  };
-
-  if (isLoading) {
-    return <Loading />;
   }
+  function onSuccess(e: any) {
+    console.log(e);
+    form.resetFields();
+    // add new post (e.data)
+  }
+
   if (data?.error) {
+    // posting while count down active should be handled here via custom error
     return <Error data={data} />;
   }
 
@@ -47,11 +53,17 @@ export default function CreatePost() {
           theme="snow"
         />
       </Form.Item>
-      <Form.Item label="Submit Your Post" {...tailFormItemLayout}>
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
-      </Form.Item>
+      {data?.data?.post ? (
+        <Form.Item label="Congrats" {...tailFormItemLayout}>
+          Post Success!
+        </Form.Item>
+      ) : (
+        <Form.Item label="Submit Your Post" {...tailFormItemLayout}>
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+        </Form.Item>
+      )}
     </Form>
   );
 }
