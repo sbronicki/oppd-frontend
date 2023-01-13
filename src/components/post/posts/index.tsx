@@ -1,13 +1,17 @@
 import { List, Typography, Card } from "antd";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { getPosts } from "../../../api";
 import Error from "../../error";
 import Loading from "../../loading";
 import Post from "../post";
 
-function Posts() {
-  const { isLoading, data } = useQuery(["posts"], getPosts);
+function Posts({ newPostAdded }: newPostAdded) {
+  const { isLoading, data, refetch } = useQuery(["posts"], getPosts);
+
+  useEffect(() => {
+    if (newPostAdded) refetch();
+  }, [newPostAdded]);
 
   if (isLoading) {
     return <Loading />;
@@ -46,4 +50,8 @@ interface postData {
   createdAt: string;
   updatedAt: string;
   __v: number;
+}
+
+interface newPostAdded {
+  newPostAdded?: boolean;
 }

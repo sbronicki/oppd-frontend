@@ -21,8 +21,8 @@ const tailFormItemLayout = {
   },
 };
 
-export default function CreatePost() {
-  const { data, isLoading, mutate } = useMutation({
+export default function CreatePost({ onAddNewPostAdded }: any) {
+  const { data, mutate } = useMutation({
     mutationFn: createPost,
     onSuccess: onSuccess,
   });
@@ -32,9 +32,8 @@ export default function CreatePost() {
     mutate(values.Post);
   }
   function onSuccess(e: any) {
-    console.log(e);
+    onAddNewPostAdded();
     form.resetFields();
-    // add new post (e.data)
   }
 
   if (data?.error) {
