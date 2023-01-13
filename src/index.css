@@ -19,17 +19,23 @@ a {
   box-sizing: border-box;
 }
 .page-layout {
+  background-color: #fff;
   width: 90vw;
-  height: 100vh;
+  min-height: 100vh;
   max-width: 2000px;
   border: 1px solid rgba(5, 5, 5, 0.06);
 }
+
 .App,
 .home-page,
 .about-page {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.post-container {
+  margin: auto;
+  padding-top: 25px;
 }
 .count-down {
   margin: 2.5rem;
@@ -41,7 +47,8 @@ a {
   max-width: 1100px;
 }
 .post-card,
-.posts-container {
+.posts-container,
+.post-container {
   width: 100%;
   max-width: 1100px;
 }

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Link, { NavLink } from "react-router-dom";
+import Link, { NavLink, useLocation } from "react-router-dom";
 import type { MenuProps } from "antd";
 import { Menu } from "antd";
 
@@ -15,12 +15,16 @@ const items: MenuProps["items"] = [
 ];
 
 export default function Navigation() {
-  const [current, setCurrent] = useState("home");
+  const location = useLocation();
+
+  const [current, setCurrent] = useState(
+    location.pathname.replace("/", "") || "home"
+  );
   const onClick: MenuProps["onClick"] = (e) => setCurrent(e.key);
 
   return (
     <Menu
-      style={{ justifyContent: "center" }}
+      style={{ justifyContent: "center", backgroundColor: "transparent" }}
       onClick={onClick}
       selectedKeys={[current]}
       mode="horizontal"

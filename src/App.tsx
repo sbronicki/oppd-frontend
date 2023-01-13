@@ -16,7 +16,14 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/posts">
             <Route index element={<Posts />} />
-            <Route path="/posts/:postIDFromURL" element={<Post />} />
+            <Route
+              path="/posts/:postIDFromURL"
+              element={
+                <div className="post-container">
+                  <Post />
+                </div>
+              }
+            />
           </Route>
           <Route path="/about" element={<About />} />
           <Route
