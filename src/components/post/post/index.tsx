@@ -30,7 +30,10 @@ function Post({ date, post, postID }: postProps) {
         />
       }
     >
-      <div dangerouslySetInnerHTML={{ __html: post || data?.data.post }}></div>
+      <div
+        className="post-container"
+        dangerouslySetInnerHTML={{ __html: post || data?.data.post }}
+      ></div>
     </Card>
   );
 }

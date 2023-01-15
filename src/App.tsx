@@ -19,7 +19,7 @@ function App() {
             <Route
               path="/posts/:postIDFromURL"
               element={
-                <div className="post-container">
+                <div className="post-card-container">
                   <Post />
                 </div>
               }
