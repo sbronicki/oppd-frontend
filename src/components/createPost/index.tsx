@@ -1,11 +1,10 @@
+import { Button, Form } from "antd";
 import { useState } from "react";
 import { useMutation } from "react-query";
-import { Form, Input, Button } from "antd";
 
-import "react-quill/dist/quill.snow.css";
 import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 import { createPost } from "../../api";
-import Loading from "../loading";
 import Error from "../error";
 
 const tailFormItemLayout = {
@@ -22,6 +21,10 @@ const tailFormItemLayout = {
 };
 
 export default function CreatePost({ onAddNewPostAdded }: any) {
+  const [placeholder, setPlaceholder] = useState<string>(
+    "Create your awesome post here!"
+  );
+
   const { data, mutate } = useMutation({
     mutationFn: createPost,
     onSuccess: onSuccess,
@@ -32,19 +35,18 @@ export default function CreatePost({ onAddNewPostAdded }: any) {
     mutate(values.Post);
   }
   function onSuccess(e: any) {
-    onAddNewPostAdded();
-    form.resetFields();
-  }
-
-  if (data?.error) {
-    // posting while count down active should be handled here via custom error
-    return <Error data={data} />;
+    if (!e.error) {
+      form.resetFields();
+      onAddNewPostAdded();
+      setPlaceholder("");
+    }
   }
 
   return (
     <Form name="editor-form" form={form} onFinish={onFinish}>
       <Form.Item name="Post" rules={[{ required: true }]}>
         <ReactQuill
+          placeholder={placeholder}
           modules={{
             toolbar: TOOLBAR_OPTIONS,
           }}
@@ -52,9 +54,14 @@ export default function CreatePost({ onAddNewPostAdded }: any) {
           theme="snow"
         />
       </Form.Item>
-      {data?.data?.post ? (
-        <Form.Item label="Congrats" {...tailFormItemLayout}>
-          Post Success!
+      {data?.error ? (
+        <Form.Item style={{ textAlign: "center" }}>
+          <Error error={data.error} />
+        </Form.Item>
+      ) : null}
+      {data?.data?.success ? (
+        <Form.Item style={{ textAlign: "center" }}>
+          Post was successful!
         </Form.Item>
       ) : (
         <Form.Item label="Submit Your Post" {...tailFormItemLayout}>

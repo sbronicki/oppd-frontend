@@ -26,10 +26,7 @@ function App() {
             />
           </Route>
           <Route path="/about" element={<About />} />
-          <Route
-            path="*"
-            element={<Error data={{ error: "404 page not found" }} />}
-          />
+          <Route path="*" element={<Error error="404 page not found" />} />
         </Route>
       </Routes>
     </div>

@@ -17,7 +17,7 @@ function Posts({ newPostAdded }: newPostAdded) {
     return <Loading />;
   }
   if (data?.error) {
-    return <Error data={data} />;
+    return <Error error={data.error} />;
   }
 
   return (
